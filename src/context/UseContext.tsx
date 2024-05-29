@@ -43,7 +43,7 @@ export interface IContext {
 
 const defaultState = {
     studentId: -1,
-    setStudentId: (id: number) => { },
+    setStudentId: () => { },
     students: [{
         stdId: '',
         prefix: '',
@@ -53,7 +53,7 @@ const defaultState = {
         birthday: '',
         gradeLevel: 0,
     }],
-    setStudents: (user: IStudent[]) => { },
+    setStudents: () => { },
     searchStudent: {
         students: [{
             stdId: '',
@@ -66,20 +66,17 @@ const defaultState = {
         }],
         status: false
     },
-    setSearchStudent: (user: {
-        students: IStudent[]
-        status?: boolean
-    }) => { },
+    setSearchStudent: () => { },
 
     classroomId: -1,
-    setClassroomId: (id: number) => { },
+    setClassroomId: () => { },
     classrooms: [{
         roomNumber: '',
         roomName: '',
         schoolYear: '',
         teacherName: '',
     }],
-    setClassrooms: (classroom: IClassroom[]) => { },
+    setClassrooms: () => { },
     searchClassroom: {
         classrooms: [{
             roomNumber: '',
@@ -89,10 +86,7 @@ const defaultState = {
         }],
         status: false
     },
-    setSearchClassroom: (user: {
-        classrooms: IClassroom[]
-        status?: boolean
-    }) => { },
+    setSearchClassroom: () => { },
 
     classroomMembers: [{
         id: 0,
@@ -113,15 +107,15 @@ const defaultState = {
             gradeLevel: 0,
         }
     }],
-    setClassroomMembers: (classroomMember: IClassroomMember[]) => { },
+    setClassroomMembers: () => { },
 
     openModal: false,
-    setOpenModal: (open: boolean) => { },
+    setOpenModal: () => { },
 
     modalBody: <></>,
-    setModalBody: (body: JSX.Element) => { },
+    setModalBody: () => { },
     modalLabel: '',
-    setModalLabel: (label: string) => { },
+    setModalLabel: () => { },
 } as IContext
 
 export const Context = createContext(defaultState);
