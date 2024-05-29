@@ -238,7 +238,53 @@ const useStudentsAPI = () => {
         }
     }
 
-    return { getStudents, getStudentById, createStudent, updateStudent, deleteStudent };
+    const getStudents7Years = async () => {
+        const data = {
+            query: `query {
+                getUserRawQuery {
+                    message
+                    users {
+                        id
+                        stdId
+                        prefix
+                        firstName
+                        lastName
+                        gender
+                        birthday
+                        gradeLevel
+                        classroom_seven_years {
+                            roomName
+                        }
+                    }
+                }
+            }
+            `
+        };
+
+        const config = {
+            url: import.meta.env.VITE_API_URL,
+            method: 'post',
+            data: data
+        };
+
+        let responseResult: any = []
+        await axios(config).then((result) => {
+            if (result.data.data.getUserRawQuery.message) {
+                responseResult = result.data.data.getUserRawQuery.users;
+                return responseResult;
+            }
+            console.log(result.data.data.getUserRawQuery.message);
+            responseResult = [];
+            return responseResult;
+        }).catch((error) => {
+            console.log(error);
+            responseResult = [];
+            return responseResult;
+        });
+        return responseResult;
+    }
+
+    return { getStudents, getStudentById, createStudent, updateStudent, deleteStudent, getStudents7Years };
 };
 
 export default useStudentsAPI;

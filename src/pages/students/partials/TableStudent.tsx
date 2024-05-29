@@ -111,7 +111,9 @@ export function TableStudent({ headCell }: { headCell: string[] }) {
 									{cell.gradeLevel}
 								</Table.Cell>
 								<Table.Cell className="font-medium text-gray-900 whitespace-nowrap dark:text-white">
-									{cell.classroomMembers?.classroom ? cell.classroomMembers.classroom.roomName : 'No Classroom'}
+									{cell.classroomMembers?.classroom ?
+										cell.classroomMembers.classroom.roomName
+										: cell.classroom_seven_years ? cell.classroom_seven_years.roomName : 'No Classroom'}
 								</Table.Cell>
 								<Table.Cell className="font-medium text-gray-900 divide-x-2 whitespace-nowrap dark:text-white">
 									<button onClick={() => { (setOpenModal(true)); setStudentId(cell.id!) }} className="pr-2 font-medium text-cyan-600 hover:underline dark:text-cyan-500">

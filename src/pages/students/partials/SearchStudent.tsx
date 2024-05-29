@@ -1,9 +1,11 @@
-import { Label, Select, TextInput } from "flowbite-react";
+import { Button, Label, Select, TextInput } from "flowbite-react";
 import { useContext, useState } from "react";
 import { Context } from "../../../context/UseContext";
+import useStudentsAPI from "../functions";
 
 export default function SearchStudent({ studentData }: { studentData: any[] }) {
     const { setSearchStudent, classrooms, classroomMembers } = useContext(Context);
+    const { getStudents7Years } = useStudentsAPI();
     const [search, setSearch] = useState({
         classroom: 0,
         gradeLevel: 0,
@@ -59,6 +61,15 @@ export default function SearchStudent({ studentData }: { studentData: any[] }) {
         }
     };
 
+    const handleSQLRawQuery = async (mode: string) => {
+        if (mode === 'query') {
+            const result = await getStudents7Years();
+            setSearchStudent({ students: result, status: true });
+        } else if (mode === 'reset') {
+            setSearchStudent({ students: studentData, status: false });
+        }
+    }
+
     return (
         <div className="flex gap-4 my-2">
             <div>
@@ -107,7 +118,21 @@ export default function SearchStudent({ studentData }: { studentData: any[] }) {
                     ))}
                 </Select>
             </div>
-
+            <div className="max-w-md">
+                <div className="block mb-1">
+                    <Label htmlFor="sql-raw-query" value="SQL Raw Query" className="truncate" />
+                </div>
+                <Button.Group>
+                    <Button id="sql-raw-query"
+                        onClick={()=>handleSQLRawQuery('query')}>
+                        Click to Query
+                    </Button>
+                    <Button id="reset" color="light"
+                        onClick={()=>handleSQLRawQuery('reset')}>
+                        Reset
+                    </Button>
+                </Button.Group>
+            </div>
         </div >
     )
 }
