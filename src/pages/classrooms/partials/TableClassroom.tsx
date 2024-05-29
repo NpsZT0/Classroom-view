@@ -39,7 +39,7 @@ export function TableClassroom({ headCell }: { headCell: string[] }) {
 	const setModalBodyToClassroom = async () => {
 		await setModalBody(<FormClassroom />);
 		await setModalLabel('Add Classroom Form');
-	  }
+	}
 	useEffect(() => {
 		setTotalPages(Math.ceil((classrooms.length ?? 1) / rowsPerPage));
 	}, [rowsPerPage]);
@@ -48,7 +48,7 @@ export function TableClassroom({ headCell }: { headCell: string[] }) {
 			<div className="flex justify-between">
 				<div className="flex items-center space-x-2">
 					<p className="text-gray-700 dark:text-gray-300">Show</p>
-					<NumberInput initNumber={(classrooms.length !== 0 ? classrooms.length : 10)} range={(classrooms.length !== 0 ? classrooms.length : 10)} setState={setRowsPerPage} />
+					<NumberInput initNumber={(classrooms.length !== 0 ? classrooms.length + 5 : 10)} range={(classrooms.length !== 0 ? classrooms.length + 5 : 10)} setState={setRowsPerPage} />
 					<p className="text-gray-700 dark:text-gray-300">Row(s)</p>
 				</div>
 				<div>

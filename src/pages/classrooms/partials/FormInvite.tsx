@@ -79,8 +79,8 @@ export default function FormInvite() {
                     <div className="flex items-center space-x-2">
                         <p className="text-gray-700 dark:text-gray-300">Show</p>
                         <NumberInput
-                            initNumber={(filteredData.length !== 0 ? filteredData.length : 10)}
-                            range={(filteredData.length !== 0 ? filteredData.length : 10)}
+                            initNumber={(filteredData.length !== 0 ? filteredData.length + 5 : 10)}
+                            range={(filteredData.length !== 0 ? filteredData.length + 5 : 10)}
                             setState={setRowsPerPage} />
                         <p className="text-gray-700 dark:text-gray-300">Row(s)</p>
                     </div>
