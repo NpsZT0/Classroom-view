@@ -16,8 +16,6 @@ This project demonstrates how to integrate an API from a Render server into a Re
   - [Displaying API Data](#displaying-api-data)
 - [Example](#example)
 - [Troubleshooting](#troubleshooting)
-- [Contributing](#contributing)
-- [License](#license)
 
 ## Prerequisites
 
