@@ -1,5 +1,4 @@
 import { Label, Select, TextInput } from "flowbite-react";
-import { IStudent } from "../../../types";
 import { useContext, useState } from "react";
 import { Context } from "../../../context/UseContext";
 
